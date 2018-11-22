@@ -1,0 +1,47 @@
+{
+  "app": {
+    "domain": ""
+  },
+  "paths": {
+    "src": "src",
+    "dist": "dist"
+  },
+  "tasks": {
+    "javascript": {
+      "src": "src/**/*.js",
+      "dist": "dist",
+      "main": [
+        "src/main.js"
+      ],
+      "bundles": [
+        {
+          "bundle": "main.js",
+          "watch": true,
+          "babel": {
+            "env": {
+              "production": {
+                "presets": [ "minify" ]
+              }
+            },
+            "plugins": [
+              "@babel/plugin-proposal-object-rest-spread",
+              "@babel/plugin-proposal-export-default-from"
+            ],
+            "presets": [
+              [
+                "@babel/preset-env", {
+                  "targets": {
+                    "browsers": [
+                      "> 0.25%",
+                      "ie >= 9"
+                    ]
+                  }
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
