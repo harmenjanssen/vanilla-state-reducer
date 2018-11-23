@@ -29,7 +29,7 @@ nav button:not([disabled]):hover {
     background: salmon;
 }
 
-nav button.is-active {
+nav button[aria-selected="true"] {
     color: red;
     border-bottom: 0;
 }
@@ -45,36 +45,46 @@ nav button.is-active {
     <h1>Vanilla JS State Reducer 🔥</h1>
 
     <nav>
-        <ul>
-            <li><button data-action="prev">prev</button></li>
-
-            <li><button data-action="jump" data-index="1">tab 1</button></li>
-            <li><button data-action="jump" data-index="2">tab 2</button></li>
-            <li><button data-action="jump" data-index="3">tab 3</button></li>
-            <li><button data-action="jump" data-index="4">tab 4</button></li>
-
-            <li><button data-action="next">next</button></li>
+        <ul role="tablist" id="tablist">
+            <li role="presentation">
+                <button role="tab" data-action="prev" aria-controls="tablist">prev</button>
+            </li>
+            <li role="presentation">
+                <button role="tab" id="tab-1" data-action="jump" data-index="1" aria-selected="true" aria-controls="tab-1">tab 1</button>
+            </li>
+            <li role="presentation">
+                <button role="tab" id="tab-2" data-action="jump" data-index="2" aria-controls="tab-2">tab 2</button>
+            </li>
+            <li role="presentation">
+                <button role="tab" id="tab-3" data-action="jump" data-index="3" aria-controls="tab-3">tab 3</button>
+            </li>
+            <li role="presentation">
+                <button role="tab" id="tab-4" data-action="jump" data-index="4" aria-controls="tab-4">tab 4</button>
+            </li>
+            <li role="presentation">
+                <button role="tab" data-action="next" aria-controls="tablist">next</button>
+            </li>
         </ul>
     </nav>
 
-    <div class="tab">
+    <div role="tabpanel" id="tabpanel-1" aria-labelledby="tab-1">
         <h2>Tab 1</h2>
         <p>Set in England's Downs, a once idyllic rural landscape, this stirring tale of adventure, courage and survival follows a band of very special creatures on their flight from the intrusion of man and the certain destruction of their home. Led by a stouthearted pair of friends, they journey forth from their native Sandleford Warren through the harrowing trials posed by predators and adversaries, to a mysterious promised land and a more perfect society.</p>
     </div>
 
-    <div class="tab">
+    <div role="tabpanel" id="tabpanel-2" aria-labelledby="tab-2" aria-hidden="true">
         <h2>Tab 2</h2>
         <p>They say that the Thorn of Camorr can beat anyone in a fight. They say he steals from the rich and gives to the poor. They say he's part man, part myth, and mostly street-corner rumor. And they are wrong on every count. Only averagely tall, slender, and god-awful with a sword, Locke Lamora is the fabled Thorn, and the greatest weapons at his disposal are his wit and cunning. He steals from the rich - they're the only ones worth stealing from - but the poor can go steal for themselves. What Locke cons, wheedles and tricks into his possession is strictly for him and his band of fellow con-artists and thieves: the Gentleman Bastards. Together their domain is the city of Camorr. Built of Elderglass by a race no-one remembers, it's a city of shifting revels, filthy canals, baroque palaces and crowded cemeteries. Home to Dons, merchants, soldiers, beggars, cripples, and feral children. And to Capa Barsavi, the criminal mastermind who runs the city. But there are whispers of a challenge to the Capa's power. A challenge from a man no one has ever seen, a man no blade can touch. The Grey King is coming. A man would be well advised not to be caught between Capa Barsavi and The Grey King. Even such a master of the sword as the Thorn of Camorr. As for Locke Lamora ...</p>
     </div>
 
-    <div class="tab">
+    <div role="tabpanel" id="tabpanel-3" aria-labelledby="tab-3" aria-hidden="true">
         <h2>Tab 3</h2>
         <p>Set in the far future amidst a sprawling feudal interstellar empire where planetary dynasties are controlled by noble houses that owe an allegiance to the imperial House Corrino, Dune tells the story of young Paul Atreides (the heir apparent to Duke Leto Atreides and heir of House Atreides) as he and his family accept control of the desert planet Arrakis, the only source of the 'spice' melange, the most important and valuable substance in the cosmos. The story explores the complex, multi-layered interactions of politics, religion, ecology, technology, and human emotion as the forces of the empire confront each other for control of Arrakis.</p>
 
         <p>Published in 1965, it won the Hugo Award in 1966 and the inaugural Nebula Award for Best Novel. Dune is frequently cited as the world's best-selling sf novel.</p>
     </div>
 
-    <div class="tab">
+    <div role="tabpanel" id="tabpanel-4" aria-labelledby="tab-4" aria-hidden="true">
         <h2>Tab 4</h2>
         <p>Days before his release from prison, Shadow's wife, Laura, dies in a mysterious car crash. Numbly, he makes his way back home. On the plane, he encounters the enigmatic Mr Wednesday, who claims to be a refugee from a distant war, a former god and the king of America.</p>
 
