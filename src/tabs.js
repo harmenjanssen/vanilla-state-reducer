@@ -45,7 +45,7 @@ const paint = (context, state) => {
 
   // Highlight the active tab
   context.nav.querySelectorAll('button[data-action="jump"]').forEach(
-    (button, index) => button.classList.toggle('is-active', index === state.currentTab)
+    (button, index) => button.setAttribute('aria-selected', index === state.currentTab)
   );
 
   // Disable next/prev
@@ -65,7 +65,7 @@ export const enhancer = rootElement => {
 
   // I like a separate context object tracking my DOM nodes
   const context = {
-    tabs: [...rootElement.querySelectorAll('.tab')],
+    tabs: [...rootElement.querySelectorAll('[role="tabpanel"]')],
     prev: rootElement.querySelector('[data-action="prev"]'),
     next: rootElement.querySelector('[data-action="next"]'),
     nav: rootElement.querySelector('nav'),
