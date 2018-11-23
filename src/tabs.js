@@ -1,5 +1,6 @@
-import { fromEvent } from 'rxjs';
-import { filter, scan } from 'rxjs/operators';
+import filter from 'kefir/src/one-source/filter';
+import scan from 'kefir/src/one-source/scan';
+import fromEvents from 'kefir/src/primary/from-events';
 
 /**
  * Process actions: form a new state object.
@@ -73,18 +74,11 @@ export const enhancer = rootElement => {
   paint(context, defaultState);
 
   // Select *only* button clicks
-  const buttonClicks = fromEvent(rootElement, 'click')
-    .pipe(filter(x => x.target.nodeName === 'BUTTON'));
+  const buttonClicks = filter(fromEvents(rootElement, 'click'), x => x.target.nodeName === 'BUTTON');
 
-  const clicksToState = buttonClicks
-    .pipe(
-      // Update state (scan is like reduce)
-      scan(
-        mutateState,
-        defaultState
-      )
-    );
+  // Update state (scan is like reduce)
+  const clicksToState = scan(buttonClicks, mutateState, defaultState);
 
   // Re-paint when state changes
-  clicksToState.subscribe(state => paint(context, state));
+  clicksToState.observe(state => paint(context, state));
 };
