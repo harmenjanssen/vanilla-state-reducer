@@ -1,18 +1,19 @@
 {
   "devDependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.1.6",
     "@grrr/gulpfile": "^5.0.4"
+  },
+  "dependencies": {
+    "@grrr/hansel": "^1.0.4",
+    "kefir": "^3.8.5"
   },
   "scripts": {
     "watch": "gulp watch --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
     "build": "gulp --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
     "build:staging": "gulp --staging --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'",
     "build:production": "BABEL_ENV=production gulp --production --cwd . --gulpfile 'node_modules/@grrr/gulpfile/gulpfile.js'"
-  },
-  "dependencies": {
-    "@babel/plugin-proposal-export-default-from": "^7.0.0",
-    "@grrr/hansel": "^1.0.4",
-    "rxjs": "^6.3.3"
   }
 }
